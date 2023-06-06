@@ -102,7 +102,7 @@ class WaterfallSeriesLabel extends _Scene.Label {
     formatter?: (params: AgCartesianSeriesLabelFormatterParams) => string = undefined;
 
     @Validate(OPT_WATERFALL_LABEL_PLACEMENT)
-    placement: AgWaterfallSeriesLabelPlacement = 'inside';
+    placement: AgWaterfallSeriesLabelPlacement = 'end';
 
     @Validate(OPT_NUMBER(0))
     padding: number = 6;
@@ -748,22 +748,17 @@ export class WaterfallBarSeries extends _ModuleSupport.CartesianSeries<
     ) {
         const { path: linePath } = lineNode;
 
+        const { stroke, strokeWidth, strokeOpacity, lineDash, lineDashOffset } = this.line;
+
+        lineNode.stroke = stroke;
+        lineNode.strokeWidth = this.getStrokeWidth(strokeWidth);
+        lineNode.strokeOpacity = strokeOpacity;
+        lineNode.lineDash = lineDash;
+        lineNode.lineDashOffset = lineDashOffset;
+
         lineNode.fill = undefined;
         lineNode.lineJoin = 'round';
         lineNode.pointerEvents = _Scene.PointerEvents.None;
-
-        lineNode.fill = undefined;
-        lineNode.lineJoin = 'round';
-        lineNode.stroke = 'black';
-        lineNode.strokeWidth = 2;
-        lineNode.lineDash = [1, 2];
-
-        // lineNode.stroke = this.stroke;
-        // lineNode.strokeWidth = this.getStrokeWidth(this.strokeWidth);
-        // lineNode.strokeOpacity = this.strokeOpacity;
-
-        // lineNode.lineDash = this.lineDash;
-        // lineNode.lineDashOffset = this.lineDashOffset;
 
         const connectorLineAnimationOptions = {
             from: 0,
@@ -843,6 +838,18 @@ export class WaterfallBarSeries extends _ModuleSupport.CartesianSeries<
         paths: Array<Array<_Scene.Path>>;
     }) {
         const [lineNode] = paths[0];
+
+        const { stroke, strokeWidth, strokeOpacity, lineDash, lineDashOffset } = this.line;
+
+        lineNode.stroke = stroke;
+        lineNode.strokeWidth = this.getStrokeWidth(strokeWidth);
+        lineNode.strokeOpacity = strokeOpacity;
+        lineNode.lineDash = lineDash;
+        lineNode.lineDashOffset = lineDashOffset;
+
+        lineNode.fill = undefined;
+        lineNode.lineJoin = 'round';
+        lineNode.pointerEvents = _Scene.PointerEvents.None;
 
         const { path: linePath } = lineNode;
         linePath.clear({ trackChanges: true });
