@@ -76,8 +76,13 @@ const COLUMN_DEFS = [
         headerTooltip: 'Deprecation',
         cellDataType: 'boolean',
         valueGetter: (params) => !!params.node.data.deprecationNotes,
+<<<<<<< HEAD
         width: 140,
         minWidth: 140,
+=======
+        width: 120,
+        minWidth: 120,
+>>>>>>> 74e6bacdfa (AG-3390 - Set URL parameter on changlog page when opening/closing release notes)
     },
     {
         field: 'breakingChange',
