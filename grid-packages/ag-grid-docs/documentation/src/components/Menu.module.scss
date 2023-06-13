@@ -163,7 +163,7 @@ button.sectionHeader {
         height: 0.375em;
         transform: translate(-0.625em, 0.45em);
         border-radius: 50%;
-        background-color: var(--white);
+        background-color: transparent;
         transition: background-color $default-transition-timing;
     }
 
